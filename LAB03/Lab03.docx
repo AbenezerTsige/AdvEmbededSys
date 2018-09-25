@@ -1,1 +1,54 @@
 
+Date Submitted: 
+
+Task 00: Execute provided code 
+
+Youtube Link: 
+
+
+
+------------------------------------------------------------------------------------
+
+Task 01: 
+Youtube Link: 
+
+Modified Schematic (if applicable):
+
+Modified Code:
+
+// Insert code here
+int main(void)
+{
+
+	.
+	.
+	.
+SysCtlClockSet(SYSCTL_SYSDIV_11|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+
+	.
+	.	
+	.
+
+}
+------------------------------------------------------------------------------------
+Task 02: 
+Youtube Link: 
+
+Modified Schematic (if applicable):
+
+Modified Code:
+
+// Insert code here
+
+------------------------------------------------------------------------------------
+Task 03: 
+
+Youtube Link: 
+
+Modified Schematic (if applicable):
+
+Modified Code:
+
+// Insert code here
+
+------------------------------------------------------------------------------------
