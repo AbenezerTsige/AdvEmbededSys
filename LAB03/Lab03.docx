@@ -1,54 +1,71 @@
 
-Date Submitted: 
-
-Task 00: Execute provided code 
-
-Youtube Link: 
-
-
+Date Submitted: 10/02/2018
 
 ------------------------------------------------------------------------------------
 
 Task 01: 
 Youtube Link: 
 
-Modified Schematic (if applicable):
-
-Modified Code:
-
-// Insert code here
 int main(void)
 {
+           /*Delay calulation:
+            * F = 1/T
+            * 2000000*3*T = 0.425S
+            * T= .0.425/6000000 = 70.833nS
+            * F= 1/70.833nS = 14MHz approx *
+            * 14MHz = 400MHz/(2*14.12) so use SYSCTL_SYSDIV_11 divider
+            * 0.425s = 70.833ns * 3(2000000 cycles)    */
+ SysCtlClockSet(SYSCTL_SYSDIV_14|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+   
+/* Before calling any peripheral specific driverLib function, we must enable the clock for that peripheral. If you fail to do this, it will result in a Fault ISR (address fault). */
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+   GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 
-	.
-	.
-	.
-SysCtlClockSet(SYSCTL_SYSDIV_11|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+while(1)
+    {
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, ui8PinData);
+        SysCtlDelay(2000000); //  loop timer provided in TivaWare.
+        // The count parameter is the loop count, not the actual delay in clock cycles.
+        // Each loop is 3 CPU cycles.
 
-	.
-	.	
-	.
+        // Turn off all three pins.
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, 0x00);
+        SysCtlDelay(2000000); // Delay
 
+        if(ui8PinData==8) {ui8PinData=2;} else {ui8PinData=ui8PinData*2;}
+    }
 }
+
+
 ------------------------------------------------------------------------------------
-Task 02: 
+Task 02_A: 
 Youtube Link: 
 
 Modified Schematic (if applicable):
 
 Modified Code:
+   	// BGR 
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_1, ui8PinData);
 
-// Insert code here
 
 ------------------------------------------------------------------------------------
-Task 03: 
+Task 02_B: 
 
 Youtube Link: 
 
 Modified Schematic (if applicable):
 
 Modified Code:
+        // R = 2, G = 8, B = 4
+        // RG = 10 (yellow), RB = 6 (purple) , GB = 12 (cyan) , RGB = 14 (white) , R, G, B
 
-// Insert code here
+        if(ui8PinData == 8 ) {
+            ui8PinData = ui8PinData / 2 ;}
+        else {
+            ui8PinData = ui8PinData + 6;
+            if(ui8PinData == 16 ) {ui8PinData = 6;}
+            if(ui8PinData == 18 ) {ui8PinData = 14;}
+            if(ui8PinData == 20 ) {ui8PinData = 2;}
+            }
 
 ------------------------------------------------------------------------------------
