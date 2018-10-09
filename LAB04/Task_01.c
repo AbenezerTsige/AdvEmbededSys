@@ -2,11 +2,11 @@
 #include <stdbool.h>    	// Boolean def for the C99 std
 #include "inc/hw_memmap.h" // Macros def memory map of Tiva C Series.
 #include "inc/hw_types.h"  // Defines common types and macros
-#include “driverlib/sysctl.h" //Defines macros for System Control API
+#include "driverlib/sysctl.h" //Defines macros for System Control API
 #include "driverlib/gpio.h" 
-#include “driverlib/interrupt.h"// Def macros for interrupt controller
+#include "driverlib/interrupt.h"// Def macros for interrupt controller
 #include "driverlib/timer.h"
-#include “inc/tm4c123gh6pm.h" 
+#include "inc/tm4c123gh6pm.h" 
 
 int main(void)
 {
@@ -25,8 +25,7 @@ int main(void)
 	// Configure Timer0 as 32 bit timer in periodic mode.
    TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
     /* Calculate Delay GPIO at 2Hz 75% duty cycle 
-generate an interrupt at 
- 3/4 of the desired period.
+     * Generate an interrupt at 3/4 of the desired period.
      * First calculate the # of clock cycles required for 2Hz period by calling SysCtclockGet() and dividing desired frequency.
      * Then divide the result by (0.75 = 3/4).
      * Finally load the value you get into timers interval load register
