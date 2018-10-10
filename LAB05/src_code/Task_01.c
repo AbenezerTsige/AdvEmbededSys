@@ -1,5 +1,6 @@
 /* Abenezer Namga
-*  Lab 05: Task 01
+*  Lab 05
+ * Task 01:
  * 1. Change the ADC Sequencer to SS3.
  * 2. Turn on the LED at PF2 if the temperature is greater than 72 degF.
  * 3. Use internal temperature sensor for all SS2 sequence.
@@ -59,7 +60,7 @@ int main(void)
        ADCIntClear(ADC0_BASE, 1); // Clear flag
        ADCProcessorTrigger(ADC0_BASE, 1); // Trigger ADC conversion
        // note, assignment asked for threshold to be 72 but that was unreasonable in my circumstance.
-       if (ui32TempValueF < 68 )
+       if (ui32TempValueF < 64 )
            GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,0);
        else
            GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,4);
