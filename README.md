@@ -1,2 +1,2 @@
-# TIVAC Labs = "LAB03....LAB09
+# TIVAC Labs = "LAB03....LAB09"
 # CC1350 Labs = "LAB_01_CC1350....LAB_05_CC1350"
